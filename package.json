@@ -1,0 +1,27 @@
+{
+  "name": "hotrestaurant",
+  "version": "1.0.1",
+  "description": "Application that matches your profile based on a set of Q&amp;A with other profiles",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majedline/FriendFinder.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/majedline/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/majedline/FriendFinder#readme"
+}
