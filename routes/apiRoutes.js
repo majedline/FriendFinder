@@ -21,8 +21,9 @@ module.exports = function (app) {
   app.post("/api/friends", function (req, res) {
 
     var friend = new Afriend(req.body.name, req.body.photo, req.body.scores);
+    console.log(friend.findMatch(0, 0, 0));
     tableData.push(friend.getTableDataFormat());
-  
+
 
 
     res.json(friend.toAPIResult());

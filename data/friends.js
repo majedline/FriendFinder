@@ -39,18 +39,52 @@ function Afriend(name, photo, scoreList) {
     return { "name": this.name, "photo": this.photo };
   }
 
-  this.findMatch = function () {
-    var scores = [];
-    for (var i = 0; i < tableArray.length; i++) {
 
-      var score = 0;
-      for (var j = 0; j < this.scoreList.length; j++) {
-        if (this.scoreList[j] != tableArray[i].scores[j]) {
-          score += Math.abs(this.scoreList[j] - tableArray[i].scores[j]);
-        }
+  // recursive function
+  this.findMatch = function (bestMatchPosition, bestMatchScore, currentPosition) {
+
+
+    // if the current position is greater than the length of tableArray, then i have reached the end and have the best match
+    if (currentPosition > tableArray.length) {
+      return tableArray[bestMatchPosition];
+
+    } else {
+      console.log({ bestMatchPosition, bestMatchScore, currentPosition });
+
+      // score of the currentPostion
+      var scoreMatchCalculation = 0;
+      // go through each score in this scoreList and the current position table array and add the differences 
+      for (var i = 0; i < this.scoreList.length; i++) {
+        scoreMatchCalculation += Math.abs(this.scoreList[i] - tableArray[currentPosition].scores[i]);
+      }
+
+      // if the new calculation of the current position is better than existing best matched score, 
+      // then we will recurse to the next postion with the new best match position and score 
+      // otherwise we will recurse to the next position with the old best match position ans score
+      if (scoreMatchCalculation > bestMatchScore) {
+        return this.findMatch(currentPosition, scoreMatchCalculation, currentPosition++);
+
+      } else {
+        return this.findMatch(bestMatchPosition, bestMatchScore, currentPosition++);
+
       }
     }
+
   }
+
+
+  // this.findMatch = function (bestMatchPosition, bestMatchScore) {
+  //   var scores = [];
+  //   for (var i = 0; i < tableArray.length; i++) {
+
+  //     var score = 0;
+  //     for (var j = 0; j < this.scoreList.length; j++) {
+  //       if (this.scoreList[j] != tableArray[i].scores[j]) {
+  //         score += Math.abs(this.scoreList[j] - tableArray[i].scores[j]);
+  //       }
+  //     }
+  //   }
+  // }
 
   this.getTableDataFormat = function () {
     return {
