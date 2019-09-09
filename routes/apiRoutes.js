@@ -2,7 +2,9 @@
 // LOAD DATA
 // ===============================================================================
 
-var tableData = require("../data/friends");
+var tableData = require("../data/friends").tableArray;
+var Afriend = require("../data/friends").Afriend;
+
 
 // ===============================================================================
 // ROUTING
@@ -17,10 +19,15 @@ module.exports = function (app) {
 
   // API POST Requests to add friend
   app.post("/api/friends", function (req, res) {
-    tableData.push(req.body);
-    res.json(true);
 
+    var friend = new Afriend(req.body.name, req.body.photo, req.body.scores);
+    tableData.push(friend.getTableDataFormat());
+  
+
+
+    res.json(friend.toAPIResult());
   });
+
 
 
 };
