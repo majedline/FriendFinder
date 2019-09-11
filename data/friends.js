@@ -103,19 +103,6 @@ function Afriend(name, photo, scoreList) {
   }
 
 
-  // this.findMatch = function (bestMatchPosition, bestMatchScore) {
-  //   var scores = [];
-  //   for (var i = 0; i < tableArray.length; i++) {
-
-  //     var score = 0;
-  //     for (var j = 0; j < this.scoreList.length; j++) {
-  //       if (this.scoreList[j] != tableArray[i].scores[j]) {
-  //         score += Math.abs(this.scoreList[j] - tableArray[i].scores[j]);
-  //       }
-  //     }
-  //   }
-  // }
-
   this.getTableDataFormat = function () {
     return {
       "name": this.name,
