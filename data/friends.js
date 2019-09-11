@@ -21,6 +21,36 @@ var tableArray = [
       4,
       1
     ]
+  }, {
+    "name": "Ahmed2",
+    "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "scores": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ]
+  }, {
+    "name": "Ahmed3",
+    "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "scores": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ]
   }
 ];
 
@@ -42,14 +72,13 @@ function Afriend(name, photo, scoreList) {
 
   // recursive function
   this.findMatch = function (bestMatchPosition, bestMatchScore, currentPosition) {
-
+    console.log({ bestMatchPosition, bestMatchScore, currentPosition });
 
     // if the current position is greater than the length of tableArray, then i have reached the end and have the best match
-    if (currentPosition > tableArray.length) {
+    if (currentPosition > tableArray.length - 1) {
       return tableArray[bestMatchPosition];
 
     } else {
-      console.log({ bestMatchPosition, bestMatchScore, currentPosition });
 
       // score of the currentPostion
       var scoreMatchCalculation = 0;
@@ -61,11 +90,12 @@ function Afriend(name, photo, scoreList) {
       // if the new calculation of the current position is better than existing best matched score, 
       // then we will recurse to the next postion with the new best match position and score 
       // otherwise we will recurse to the next position with the old best match position ans score
-      if (scoreMatchCalculation > bestMatchScore) {
-        return this.findMatch(currentPosition, scoreMatchCalculation, currentPosition++);
+      var nextPosition = currentPosition + 1;
 
+      if (scoreMatchCalculation <= bestMatchScore) {
+        return this.findMatch(currentPosition, scoreMatchCalculation, nextPosition);
       } else {
-        return this.findMatch(bestMatchPosition, bestMatchScore, currentPosition++);
+        return this.findMatch(bestMatchPosition, bestMatchScore, nextPosition);
 
       }
     }
